@@ -6,6 +6,7 @@ import 'dotenv/config';
 const connectDB = async()=>{
     try {
         const uri = `${process.env.MONGO_URI}/${process.env.MONGODB_NAME}`
+        console.log("Constructed URI:", uri);
         const conn = await mongoose.connect(uri)
         console.log(`NotificationDB connected : ${conn.connection.host}`)
     } catch (e:any) {

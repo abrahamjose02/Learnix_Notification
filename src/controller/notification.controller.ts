@@ -35,6 +35,31 @@ export class NotificationController{
         }
     }
 
+
+    sendResetMail = async(data:any)=>{
+        const currentDate:string = moment().format('DD MM YYYY');
+        console.log("UserDetails:", data)
+        const userData = {
+            user:{name:data.name},
+            resetCode:data.resetCode,
+            currentDate:currentDate
+        }
+        const html = await ejs.renderFile(
+            path.join(__dirname,"../mails/reset-mail.ejs"),
+            userData
+        );
+        try {
+            await sendMail({
+                email:data.email,
+                subject:"Rest your password",
+                template:'reset-mail.ejs',
+                data:userData
+            })
+        } catch (e:any) {
+            console.log(e)
+        }
+    }
+
     getNotification = (data:string)=>{
         try {
             return this.service.getNotification(data)

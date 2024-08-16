@@ -8,7 +8,7 @@ import rabbitMQConfig from "../../config/rabbitMQ.config";
 class RabbitMQClient{
     private constructor(){}
     private static instance:RabbitMQClient;
-    private isInitalized=true;
+    private isInitalized=false;
     private producer : Producer | undefined;
     private consumer : Consumer | undefined;
     private connection:Connection | undefined;
