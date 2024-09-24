@@ -62,7 +62,7 @@ export class NotificationController{
 
     getNotification = (data:string)=>{
         try {
-            return this.service.getNotification(data)
+            return this.service.getNotifications(data)
         } catch (e:any) {
             console.log(e)
         }
